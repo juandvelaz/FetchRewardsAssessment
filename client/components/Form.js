@@ -92,6 +92,21 @@ export default function Form() {
           )}
         </select>
       </div>
+      <div>
+        <label htmlFor="state">Location: </label>
+        <select id="state" value={form.state} onChange={handleChange} required>
+          <option value="">Please Select</option>
+          {data ? (
+            Object.values(data.states).map((element, index) => (
+              <option value={element.name} key={index}>
+                {element.name}
+              </option>
+            ))
+          ) : (
+            <option value="Loading">Loading</option>
+          )}
+        </select>
+      </div>
       <button type="submit">Submit</button>
     </form>
   );
