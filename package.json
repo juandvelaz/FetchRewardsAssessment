@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack -w & nodemon -q node server/index.js",
+    "start": "node server",
+    "start-dev": "webpack -w & nodemon -q node server/index.js",
     "build": "webpack --mode=production"
   },
   "keywords": [],
