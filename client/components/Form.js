@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function Form() {
   const [form, setForm] = useState({
@@ -21,6 +22,21 @@ export default function Form() {
 
     console.log(form);
   };
+
+  const [data, setData] = useState();
+  useEffect(() => {
+    const fetchRewardsData = async () => {
+      try {
+        const response = await axios.get(
+          `https://frontend-take-home.fetchrewards.com/form`
+        );
+        setData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchRewardsData();
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -55,6 +71,26 @@ export default function Form() {
           onChange={handleChange}
           required
         />
+      </div>
+      <div>
+        <label htmlFor="occupation">Occupation: </label>
+        <select
+          id="occupation"
+          value={form.occupation}
+          onChange={handleChange}
+          required
+        >
+          <option value="">Please Select</option>
+          {data ? (
+            Object.values(data.occupations).map((element, index) => (
+              <option value={element} key={index}>
+                {element}
+              </option>
+            ))
+          ) : (
+            <option value="Loading">Loading</option>
+          )}
+        </select>
       </div>
       <button type="submit">Submit</button>
     </form>
