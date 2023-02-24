@@ -33,7 +33,21 @@ function Form() {
   };
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(form);
+    const sendFormData = async () => {
+      try {
+        const response = await axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('https://frontend-take-home.fetchrewards.com/form', form);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    sendFormData();
+    setForm({
+      name: '',
+      email: '',
+      password: '',
+      occupation: '',
+      state: ''
+    });
   };
   const [data, setData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {

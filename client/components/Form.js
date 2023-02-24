@@ -20,7 +20,25 @@ export default function Form() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(form);
+    const sendFormData = async () => {
+      try {
+        const response = await axios.post(
+          'https://frontend-take-home.fetchrewards.com/form',
+          form
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    sendFormData();
+
+    setForm({
+      name: '',
+      email: '',
+      password: '',
+      occupation: '',
+      state: '',
+    });
   };
 
   const [data, setData] = useState();
@@ -50,6 +68,7 @@ export default function Form() {
           required
         />
       </div>
+
       <div>
         <label htmlFor="email">Email: </label>
         <input
@@ -60,6 +79,7 @@ export default function Form() {
           required
         />
       </div>
+
       <div>
         <label htmlFor="password">Password: </label>
         <input
@@ -72,6 +92,7 @@ export default function Form() {
           required
         />
       </div>
+
       <div>
         <label htmlFor="occupation">Occupation: </label>
         <select
@@ -92,6 +113,7 @@ export default function Form() {
           )}
         </select>
       </div>
+
       <div>
         <label htmlFor="state">Location: </label>
         <select id="state" value={form.state} onChange={handleChange} required>
