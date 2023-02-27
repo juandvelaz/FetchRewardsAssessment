@@ -18,11 +18,13 @@
 
 ### Please note:
 
-- I avoided using create-react-app to manually configure Webpack and BabelRC as I believe you can demostate your experience if you can create the app from scratch.
+- I avoided using create-react-app to manually configure Webpack and BabelRC as I believe you can demostate expertise if you can create the app from scratch.
 - I also coded a fundemental Express.JS server to show some of my experience in the back-end. It is fairly basic since there wasn't a need for a DataBase but it served me well as I was building the front-end.
 - While it might complicate comprehensibility on the server code, I acknowledge ChalkJS is here purely for the colorful fun it provides on the terminal.
 - I would like to point out a special notice for the Form component code as I believe it is fairly clean, easy to read, and worthy of employment.
 
 ---
 
-### I look forward to hearing from someone at Fetch Rewards !!
+### I would absolutely love to contribute at Fetch Rewards !!
+
+### Please email me at juandvelaz@gmail.com for any updates
