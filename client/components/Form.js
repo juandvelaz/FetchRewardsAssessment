@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Confetti from 'react-confetti';
 import axios from 'axios';
 
 export default function Form() {
@@ -9,6 +10,8 @@ export default function Form() {
     occupation: '',
     state: '',
   });
+
+  const [confetti, setConfetti] = useState(false);
 
   const handleChange = (event) => {
     setForm({
@@ -39,6 +42,8 @@ export default function Form() {
       occupation: '',
       state: '',
     });
+
+    setConfetti(true);
   };
 
   const [data, setData] = useState();
@@ -140,6 +145,9 @@ export default function Form() {
         </div>
         <button type="submit">Submit</button>
       </form>
+      {confetti ? (
+        <Confetti recycle={false} numberOfPieces={1000} gravity={0.35} />
+      ) : null}
     </section>
   );
 }
