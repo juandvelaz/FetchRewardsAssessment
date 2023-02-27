@@ -14,9 +14,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_confetti__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-confetti */ "./node_modules/react-confetti/dist/react-confetti.min.js");
-/* harmony import */ var react_confetti__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_confetti__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var _Success__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Success */ "./client/components/Success.js");
 
 
 
@@ -28,7 +27,7 @@ function Form() {
     occupation: '',
     state: ''
   });
-  const [confetti, setConfetti] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [formSubmitted, setFormSubmitted] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const handleChange = event => {
     setForm({
       ...form,
@@ -52,7 +51,7 @@ function Form() {
       occupation: '',
       state: ''
     });
-    setConfetti(true);
+    setFormSubmitted(true);
   };
   const [data, setData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -66,7 +65,7 @@ function Form() {
     };
     fetchRewardsData();
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", null, formSubmitted ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Success__WEBPACK_IMPORTED_MODULE_1__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onSubmit: handleSubmit,
     className: "formBox"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Hello Fetch Rewards"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -127,11 +126,36 @@ function Form() {
     value: "Loading"
   }, "Loading")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit"
-  }, "Submit")), confetti ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react_confetti__WEBPACK_IMPORTED_MODULE_1___default()), {
-    recycle: false,
-    numberOfPieces: 1000,
-    gravity: 0.35
-  }) : null);
+  }, "Submit")));
+}
+
+/***/ }),
+
+/***/ "./client/components/Success.js":
+/*!**************************************!*\
+  !*** ./client/components/Success.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Success)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_confetti__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-confetti */ "./node_modules/react-confetti/dist/react-confetti.min.js");
+/* harmony import */ var react_confetti__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_confetti__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function Success() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "formBox"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react_confetti__WEBPACK_IMPORTED_MODULE_1___default()), {
+    width: 400,
+    height: 450,
+    gravity: 0.2
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Success"));
 }
 
 /***/ }),

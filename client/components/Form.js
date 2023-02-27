@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Confetti from 'react-confetti';
 import axios from 'axios';
+import Success from './Success';
 
 export default function Form() {
   const [form, setForm] = useState({
@@ -11,7 +11,7 @@ export default function Form() {
     state: '',
   });
 
-  const [confetti, setConfetti] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleChange = (event) => {
     setForm({
@@ -43,7 +43,7 @@ export default function Form() {
       state: '',
     });
 
-    setConfetti(true);
+    setFormSubmitted(true);
   };
 
   const [data, setData] = useState();
@@ -63,91 +63,92 @@ export default function Form() {
 
   return (
     <section>
-      <form onSubmit={handleSubmit} className="formBox">
-        <h2>Hello Fetch Rewards</h2>
-        <div className="inputBox">
-          <div>
-            <label htmlFor="name">Full Name: </label>
-            <input
-              id="name"
-              type="text"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
+      {formSubmitted ? (
+        <Success />
+      ) : (
+        <form onSubmit={handleSubmit} className="formBox">
+          <h2>Hello Fetch Rewards</h2>
+          <div className="inputBox">
+            <div>
+              <label htmlFor="name">Full Name: </label>
+              <input
+                id="name"
+                type="text"
+                value={form.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-          <div>
-            <label htmlFor="email">Email: </label>
-            <input
-              id="email"
-              type="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
+            <div>
+              <label htmlFor="email">Email: </label>
+              <input
+                id="email"
+                type="email"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-          <div>
-            <label htmlFor="password">Password: </label>
-            <input
-              id="password"
-              type="password"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}"
-              title="Password must be 4 or more characters containing at least one number, one uppercase letter, and one lowercase letter"
-              value={form.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
+            <div>
+              <label htmlFor="password">Password: </label>
+              <input
+                id="password"
+                type="password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}"
+                title="Password must be 4 or more characters containing at least one number, one uppercase letter, and one lowercase letter"
+                value={form.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-          <div>
-            <label htmlFor="occupation">Occupation: </label>
-            <select
-              id="occupation"
-              value={form.occupation}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Please Select</option>
-              {data ? (
-                Object.values(data.occupations).map((element, index) => (
-                  <option value={element} key={index}>
-                    {element}
-                  </option>
-                ))
-              ) : (
-                <option value="Loading">Loading</option>
-              )}
-            </select>
-          </div>
+            <div>
+              <label htmlFor="occupation">Occupation: </label>
+              <select
+                id="occupation"
+                value={form.occupation}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Please Select</option>
+                {data ? (
+                  Object.values(data.occupations).map((element, index) => (
+                    <option value={element} key={index}>
+                      {element}
+                    </option>
+                  ))
+                ) : (
+                  <option value="Loading">Loading</option>
+                )}
+              </select>
+            </div>
 
-          <div>
-            <label htmlFor="state">Location: </label>
-            <select
-              id="state"
-              value={form.state}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Please Select</option>
-              {data ? (
-                Object.values(data.states).map((element, index) => (
-                  <option value={element.name} key={index}>
-                    {element.name}
-                  </option>
-                ))
-              ) : (
-                <option value="Loading">Loading</option>
-              )}
-            </select>
+            <div>
+              <label htmlFor="state">Location: </label>
+              <select
+                id="state"
+                value={form.state}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Please Select</option>
+                {data ? (
+                  Object.values(data.states).map((element, index) => (
+                    <option value={element.name} key={index}>
+                      {element.name}
+                    </option>
+                  ))
+                ) : (
+                  <option value="Loading">Loading</option>
+                )}
+              </select>
+            </div>
           </div>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-      {confetti ? (
-        <Confetti recycle={false} numberOfPieces={1000} gravity={0.35} />
-      ) : null}
+          <button type="submit">Submit</button>
+        </form>
+      )}
     </section>
   );
 }
