@@ -155,7 +155,11 @@ function Success() {
     width: 400,
     height: 450,
     gravity: 0.2
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Success"));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "successBox"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "! Success !"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "My email is juandvelaz@gmail.com"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    href: "https://github.com/juandvelaz/FetchRewardsAssessment"
+  }, "Click Here to see the source code")));
 }
 
 /***/ }),
